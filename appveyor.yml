@@ -1,0 +1,15 @@
+platform:
+#  - x86
+  - x64
+
+cache:
+  - Release
+
+install:
+  - python -V
+  - set PYTHON=python
+  - .\vcbuild
+
+test_script:
+  - .\vcbuild test
+
