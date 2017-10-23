@@ -2,14 +2,13 @@ platform:
 #  - x86
   - x64
 
-cache:
-  - Release
-
+environment:
+  PYTHON: python
 install:
-  - python -V
-  - set PYTHON=python
-  - .\vcbuild
-
+- cmd: python -V
+cache: Release
+build_script:
+- cmd: ./vcbuild
 test_script:
-  - .\vcbuild test
+- cmd: .\vcbuild test
 
