@@ -1,7 +1,7 @@
-Node.js is licensed for use as follows:
+Ayo.js is licensed for use as follows:
 
 """
-Copyright Node.js contributors. All rights reserved.
+Copyright Ayo.js contributors. All rights reserved.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to
@@ -22,7 +22,7 @@ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 IN THE SOFTWARE.
 """
 
-This license applies to parts of Node.js originating from the
+This license applies to parts of Ayo.js originating from the
 https://github.com/joyent/node repository:
 
 """
@@ -46,10 +46,10 @@ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 IN THE SOFTWARE.
 """
 
-The Node.js license applies to all parts of Node.js that are not externally
+The Ayo.js license applies to all parts of Ayo.js that are not externally
 maintained libraries.
 
-The externally maintained libraries used by Node.js are:
+The externally maintained libraries used by Ayo.js are:
 
 - c-ares, located at deps/cares, is licensed as follows:
   """

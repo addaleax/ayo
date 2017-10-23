@@ -8,8 +8,8 @@
                 guid="{77754E9B-264B-4D8D-B981-E4135C1ECB0C}"
                 symbol="NODE_ETW_PROVIDER"
                 message="$(string.NodeJS-ETW-provider.name)"
-                resourceFileName="node.exe"
-                messageFileName="node.exe">
+                resourceFileName="ayo.exe"
+                messageFileName="ayo.exe">
 
                 <tasks>
                   <task name="MethodRuntime" value="1"

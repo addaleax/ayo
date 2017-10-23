@@ -117,7 +117,7 @@ def subdir_files(path, dest, action):
 
 def files(action):
   is_windows = sys.platform == 'win32'
-  output_file = 'node'
+  output_file = 'ayo'
   output_prefix = 'out/Release/'
 
   if 'false' == variables.get('node_shared'):
@@ -145,19 +145,19 @@ def files(action):
     if action == uninstall:
       action([link_path], link_target)
     elif action == install:
-      try_symlink('node', link_path)
+      try_symlink('ayo', link_path)
     else:
       assert(0)  # Unhandled action type.
 
   if 'true' == variables.get('node_use_dtrace'):
-    action(['out/Release/node.d'], 'lib/dtrace/node.d')
+    action(['out/Release/ayo.d'], 'lib/dtrace/ayo.d')
 
   # behave similarly for systemtap
   action(['src/node.stp'], 'share/systemtap/tapset/')
 
-  action(['deps/v8/tools/gdbinit'], 'share/doc/node/')
-  action(['deps/v8/tools/lldbinit'], 'share/doc/node/')
-  action(['deps/v8/tools/lldb_commands.py'], 'share/doc/node/')
+  action(['deps/v8/tools/gdbinit'], 'share/doc/ayo/')
+  action(['deps/v8/tools/lldbinit'], 'share/doc/ayo/')
+  action(['deps/v8/tools/lldb_commands.py'], 'share/doc/ayo/')
 
   if 'freebsd' in sys.platform or 'openbsd' in sys.platform:
     action(['doc/ayo.1'], 'man/man1/')
@@ -182,7 +182,7 @@ def headers(action):
 
   # Add the expfile that is created on AIX
   if sys.platform.startswith('aix'):
-    action(['out/Release/node.exp'], 'include/node/')
+    action(['out/Release/ayo.exp'], 'include/node/')
 
   subdir_files('deps/v8/include', 'include/node/', action)
 

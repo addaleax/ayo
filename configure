@@ -73,10 +73,10 @@ shared_optgroup = optparse.OptionGroup(parser, "Shared libraries",
     "built-in dependencies or its shared representations. If necessary, "
     "provide multiple libraries with comma.")
 intl_optgroup = optparse.OptionGroup(parser, "Internationalization",
-    "Flags that lets you enable i18n features in Node.js as well as which "
+    "Flags that lets you enable i18n features in Ayo.js as well as which "
     "library you want to build against.")
 http2_optgroup = optparse.OptionGroup(parser, "HTTP2",
-    "Flags that allows you to control HTTP2 features in Node.js")
+    "Flags that allows you to control HTTP2 features in Ayo.js")
 
 # Options should be in alphabetical order but keep --prefix at the top,
 # that's arguably the one people will be looking for most.
@@ -509,7 +509,7 @@ parser.add_option('--without-v8-platform',
     action='store_true',
     dest='without_v8_platform',
     default=False,
-    help='do not initialize v8 platform during node.js startup. ' +
+    help='do not initialize v8 platform during ayo.js startup. ' +
          '(This mode is not officially supported for regular applications)')
 
 parser.add_option('--without-bundled-v8',
@@ -595,7 +595,7 @@ def get_version_helper(cc, regexp):
     proc = subprocess.Popen(shlex.split(cc) + ['-v'], stdin=subprocess.PIPE,
                             stderr=subprocess.PIPE, stdout=subprocess.PIPE)
   except OSError:
-    print('''Node.js configure error: No acceptable C compiler found!
+    print('''Ayo.js configure error: No acceptable C compiler found!
 
         Please make sure you have a C compiler installed on your system and/or
         consider adjusting the CC environment variable if you installed
@@ -626,7 +626,7 @@ def get_gas_version(cc):
                             stdin=subprocess.PIPE, stderr=subprocess.PIPE,
                             stdout=subprocess.PIPE)
   except OSError:
-    print('''Node.js configure error: No acceptable C compiler found!
+    print('''Ayo.js configure error: No acceptable C compiler found!
 
         Please make sure you have a C compiler installed on your system and/or
         consider adjusting the CC environment variable if you installed
@@ -688,7 +688,7 @@ def cc_macros(cc=None):
                          stdout=subprocess.PIPE,
                          stderr=subprocess.PIPE)
   except OSError:
-    print('''Node.js configure error: No acceptable C compiler found!
+    print('''Ayo.js configure error: No acceptable C compiler found!
 
         Please make sure you have a C compiler installed on your system and/or
         consider adjusting the CC environment variable if you installed

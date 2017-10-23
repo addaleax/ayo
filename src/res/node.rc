@@ -24,7 +24,7 @@
 
 
 // Application icon
-1 ICON node.ico
+1 ICON ayo.ico
 
 
 // Version resource
@@ -50,14 +50,14 @@ BEGIN
     BEGIN
         BLOCK "040904b0"
         BEGIN
-            VALUE "CompanyName", "Node.js"
-            VALUE "ProductName", "Node.js"
-            VALUE "FileDescription", "Node.js: Server-side JavaScript"
+            VALUE "CompanyName", "Ayo.js"
+            VALUE "ProductName", "Ayo.js"
+            VALUE "FileDescription", "Ayo.js: Server-side JavaScript"
             VALUE "FileVersion", NODE_EXE_VERSION
             VALUE "ProductVersion", NODE_EXE_VERSION
-            VALUE "OriginalFilename", "node.exe"
-            VALUE "InternalName", "node"
-            VALUE "LegalCopyright", "Copyright Node.js contributors. MIT license."
+            VALUE "OriginalFilename", "ayo.exe"
+            VALUE "InternalName", "ayo"
+            VALUE "LegalCopyright", "Copyright Ayo.js contributors. MIT license."
         END
     END
     BLOCK "VarFileInfo"

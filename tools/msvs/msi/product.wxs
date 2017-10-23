@@ -2,11 +2,11 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
      xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
 
-  <?define ProductName = "Node.js" ?>
-  <?define ProductDescription = "Node.js" ?>
-  <?define ProductAuthor = "Node.js Foundation" ?>
+  <?define ProductName = "Ayo.js" ?>
+  <?define ProductDescription = "Ayo.js" ?>
+  <?define ProductAuthor = "Ayo.js Foundation" ?>
 
-  <?define RegistryKeyPath = "SOFTWARE\Node.js" ?>
+  <?define RegistryKeyPath = "SOFTWARE\Ayo.js" ?>
 
   <?define RepoDir="$(var.ProjectDir)..\..\..\" ?>
   <?define SourceDir="$(var.RepoDir)\$(var.Configuration)\" ?>
@@ -41,9 +41,9 @@
                       Property="EARLY_IO_DETECTED" />
     </Upgrade>
 
-    <Icon Id="NodeIcon" SourceFile="$(var.RepoDir)\src\res\node.ico"/>
+    <Icon Id="NodeIcon" SourceFile="$(var.RepoDir)\src\res\ayo.ico"/>
     <Property Id="ARPPRODUCTICON" Value="NodeIcon"/>
-    <Property Id="ApplicationFolderName" Value="nodejs"/>
+    <Property Id="ApplicationFolderName" Value="ayojs"/>
     <Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR"/>
 
     <Property Id="INSTALLDIR" Secure="yes">
@@ -130,7 +130,7 @@
 
     <Directory Id="TARGETDIR" Name="SourceDir">
       <Directory Id="ProgramMenuFolder">
-        <Directory Id="ApplicationProgramsFolder" Name="Node.js"/>
+        <Directory Id="ApplicationProgramsFolder" Name="Ayo.js"/>
       </Directory>
 
       <Directory Id="$(var.ProgramFilesFolderId)">
@@ -141,7 +141,7 @@
 
     <DirectoryRef Id="INSTALLDIR">
       <Component Id="NodeExecutable">
-        <File Id="node.exe" KeyPath="yes" Source="$(var.SourceDir)\node.exe"/>
+        <File Id="ayo.exe" KeyPath="yes" Source="$(var.SourceDir)\ayo.exe"/>
       </Component>
 
       <Component Id="NodeRegistryEntries">
@@ -173,7 +173,7 @@
       <?if $(var.NoETW) != 1 ?>
       <Component Id="NodeEtwSupport">
         <File Id="node_etw_provider.man" Source="$(var.RepoDir)\src\res\node_etw_provider.man">
-          <util:EventManifest MessageFile="[INSTALLDIR]node.exe" ResourceFile="[INSTALLDIR]node.exe"/>
+          <util:EventManifest MessageFile="[INSTALLDIR]ayo.exe" ResourceFile="[INSTALLDIR]ayo.exe"/>
         </File>
       </Component>
       <?endif?>
@@ -190,17 +190,17 @@
                        Value="1"
                        KeyPath="yes"/>
         <Shortcut Id="NodeVarsScriptShortcut"
-                  Name="Node.js command prompt"
+                  Name="Ayo.js command prompt"
                   Target="[%ComSpec]"
                   Arguments='/k "[INSTALLDIR]nodevars.bat"'
                   Show="normal"
                   WorkingDirectory="INSTALLDIR"/>
         <Shortcut Id="NodeExecutableShortcut"
-                  Name="Node.js"
-                  Target="[INSTALLDIR]node.exe"
+                  Name="Ayo.js"
+                  Target="[INSTALLDIR]ayo.exe"
                   WorkingDirectory="INSTALLDIR"/>
         <Shortcut Id="UninstallProduct"
-                  Name="Uninstall Node.js"
+                  Name="Uninstall Ayo.js"
                   Target="[SystemFolder]msiexec.exe"
                   Arguments="/x [ProductCode]"/>
         <RemoveFolder Id="RemoveApplicationProgramsFolder"
@@ -253,11 +253,11 @@
                        Value="1"
                        KeyPath="yes"/>
         <util:InternetShortcut Id="WebsiteShortcut"
-                               Name="Node.js website"
-                               Target="http://nodejs.org"
+                               Name="Ayo.js website"
+                               Target="http://ayojs.tech"
                                Type="url"/>
         <util:InternetShortcut Id="DocsShortcut"
-                               Name="Node.js documentation"
+                               Name="Ayo.js documentation"
                                Target="https://nodejs.org/download/$(var.DistTypeDir)/v$(var.FullVersion)/docs/api/"
                                Type="url"/>
       </Component>
