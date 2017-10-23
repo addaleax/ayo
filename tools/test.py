@@ -923,13 +923,13 @@ class Context(object):
 
   def GetVm(self, arch, mode):
     if arch == 'none':
-      name = 'out/Debug/node' if mode == 'debug' else 'out/Release/node'
+      name = 'out/Debug/ayo' if mode == 'debug' else 'out/Release/ayo'
     else:
-      name = 'out/%s.%s/node' % (arch, mode)
+      name = 'out/%s.%s/ayo' % (arch, mode)
 
     # Currently GYP does not support output_dir for MSVS.
     # http://code.google.com/p/gyp/issues/detail?id=40
-    # It will put the builds into Release/node.exe or Debug/node.exe
+    # It will put the builds into Release/ayo.exe or Debug/ayo.exe
     if utils.IsWindows():
       if not exists(name + '.exe'):
         name = name.replace('out/', '')

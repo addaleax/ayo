@@ -20,7 +20,7 @@
     'node_shared_openssl%': 'false',
     'node_v8_options%': '',
     'node_enable_v8_vtunejit%': 'false',
-    'node_core_target_name%': 'node',
+    'node_core_target_name%': 'ayo',
     'library_files': [
       'lib/internal/bootstrap_node.js',
       'lib/async_hooks.js',
@@ -633,9 +633,9 @@
           }, {
             'conditions': [
               ['OS=="win"', {
-                'OBJ_PATH': '<(OBJ_DIR)/node',
-                'OBJ_GEN_PATH': '<(OBJ_DIR)/node',
-                'OBJ_TRACING_PATH': '<(OBJ_DIR)/node',
+                'OBJ_PATH': '<(OBJ_DIR)/ayo',
+                'OBJ_GEN_PATH': '<(OBJ_DIR)/ayo',
+                'OBJ_TRACING_PATH': '<(OBJ_DIR)/ayo',
               }],
               ['OS=="aix"', {
                 'OBJ_PATH': '<(OBJ_DIR)/node_base/src',
@@ -754,7 +754,7 @@
     ['OS=="aix"', {
       'targets': [
         {
-          'target_name': 'node',
+          'target_name': 'ayo',
           'conditions': [
             ['node_shared=="true"', {
               'type': 'shared_library',

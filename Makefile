@@ -41,7 +41,7 @@ EXEEXT := $(shell $(PYTHON) -c \
 		"import sys; print('.exe' if sys.platform == 'win32' else '')")
 
 # Build to /node for easy cross-repo compat.
-BUILD_EXE_NAME = node$(EXEEXT)
+BUILD_EXE_NAME = ayo$(EXEEXT)
 
 NODE_EXE = ayo$(EXEEXT)
 NODE ?= ./$(NODE_EXE)
@@ -172,7 +172,7 @@ coverage-test: coverage-build
 		--temp-directory "$(CURDIR)/.cov_tmp" \
 		--report-dir "../coverage")
 	-(cd out && "../gcovr/scripts/gcovr" --gcov-exclude='.*deps' \
-		--gcov-exclude='.*usr' -v -r Release/obj.target/node \
+		--gcov-exclude='.*usr' -v -r Release/obj.target/ayo \
 		--html --html-detail -o ../coverage/cxxcoverage.html)
 	mv lib lib_
 	mv lib__ lib
@@ -336,8 +336,8 @@ build-addons-napi: $(NODE_EXE) test/addons-napi/.buildstamp
 
 clear-stalled:
 	# Clean up any leftover processes but don't error if found.
-	ps awwx | grep Release/node | grep -v grep | cat
-	@PS_OUT=`ps awwx | grep Release/node | grep -v grep | awk '{print $$1}'`; \
+	ps awwx | grep Release/ayo | grep -v grep | cat
+	@PS_OUT=`ps awwx | grep Release/ayo | grep -v grep | awk '{print $$1}'`; \
 	if [ "$${PS_OUT}" ]; then \
 		echo $${PS_OUT} | xargs kill; \
 	fi
@@ -375,8 +375,8 @@ test-ci-js: | clear-stalled
 		--mode=release --flaky-tests=$(FLAKY_TESTS) \
 		$(TEST_CI_ARGS) $(CI_ASYNC_HOOKS) $(CI_JS_SUITES) known_issues
 	# Clean up any leftover processes, error if found.
-	ps awwx | grep Release/node | grep -v grep | cat
-	@PS_OUT=`ps awwx | grep Release/node | grep -v grep | awk '{print $$1}'`; \
+	ps awwx | grep Release/ayo | grep -v grep | cat
+	@PS_OUT=`ps awwx | grep Release/ayo | grep -v grep | awk '{print $$1}'`; \
 	if [ "$${PS_OUT}" ]; then \
 		echo $${PS_OUT} | xargs kill; exit 1; \
 	fi
@@ -388,8 +388,8 @@ test-ci: | clear-stalled build-addons build-addons-napi
 		--mode=release --flaky-tests=$(FLAKY_TESTS) \
 		$(TEST_CI_ARGS) $(CI_ASYNC_HOOKS) $(CI_JS_SUITES) $(CI_NATIVE_SUITES) known_issues
 	# Clean up any leftover processes, error if found.
-	ps awwx | grep Release/node | grep -v grep | cat
-	@PS_OUT=`ps awwx | grep Release/node | grep -v grep | awk '{print $$1}'`; \
+	ps awwx | grep Release/ayo | grep -v grep | cat
+	@PS_OUT=`ps awwx | grep Release/ayo | grep -v grep | awk '{print $$1}'`; \
 	if [ "$${PS_OUT}" ]; then \
 		echo $${PS_OUT} | xargs kill; exit 1; \
 	fi
@@ -524,7 +524,7 @@ out/doc/api/assets/%: doc/api_assets/% out/doc/api/assets/
 out/doc/%: doc/%
 	cp -r $< $@
 
-# check if ./node is actually set, else use user pre-installed binary
+# check if ./ayo is actually set, else use user pre-installed binary
 gen-json = tools/doc/generate.js --format=json $< > $@
 gen-html = tools/doc/generate.js --node-version=$(FULLVERSION) --format=html \
 			--template=doc/template.html --analytics=$(DOCS_ANALYTICS) $< > $@
@@ -537,7 +537,7 @@ gen-doc =	\
 		else \
 			cd tools/doc && node ../../$(NPM) install; \
 		fi;\
-	[ -x $(NODE) ] && $(NODE) $(1) || node $(1)
+	[ -x $(NODE) ] && $(NODE) $(1) || node $(1) || ayo $(1)
 
 out/doc/api/%.json: doc/api/%.md
 	$(call gen-doc, $(gen-json))

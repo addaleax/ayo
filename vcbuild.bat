@@ -142,7 +142,7 @@ if defined build_release (
 )
 
 :: assign path to node_exe
-set "node_exe=%config%\node.exe"
+set "node_exe=%config%\ayo.exe"
 set "node_gyp_exe="%node_exe%" deps\npm\node_modules\node-gyp\bin\node-gyp"
 if "%target_env%"=="vs2015" set "node_gyp_exe=%node_gyp_exe% --msvs_version=2015"
 if "%target_env%"=="vs2017" set "node_gyp_exe=%node_gyp_exe% --msvs_version=2017"
@@ -277,7 +277,7 @@ if "%target%" == "Clean" goto exit
 @rem Skip signing unless the `sign` option was specified.
 if not defined sign goto licensertf
 
-call tools\sign.bat Release\node.exe
+call tools\sign.bat Release\ayo.exe
 if errorlevel 1 echo Failed to sign exe&goto exit
 
 :licensertf
@@ -294,8 +294,8 @@ cd Release
 mkdir node-v%FULLVERSION%-win-%target_arch% > nul 2> nul
 mkdir node-v%FULLVERSION%-win-%target_arch%\node_modules > nul 2>nul
 
-copy /Y node.exe node-v%FULLVERSION%-win-%target_arch%\ > nul
-if errorlevel 1 echo Cannot copy node.exe && goto package_error
+copy /Y ayo.exe node-v%FULLVERSION%-win-%target_arch%\ > nul
+if errorlevel 1 echo Cannot copy ayo.exe && goto package_error
 copy /Y ..\LICENSE node-v%FULLVERSION%-win-%target_arch%\ > nul
 if errorlevel 1 echo Cannot copy LICENSE && goto package_error
 copy /Y ..\README.md node-v%FULLVERSION%-win-%target_arch%\ > nul
@@ -398,7 +398,7 @@ goto exit
 :build-addons
 if not defined build_addons goto build-addons-napi
 if not exist "%node_exe%" (
-  echo Failed to find node.exe
+  echo Failed to find ayo.exe
   goto build-addons-napi
 )
 echo Building addons
@@ -421,7 +421,7 @@ for /d %%F in (test\addons\*) do (
 :build-addons-napi
 if not defined build_addons_napi goto run-tests
 if not exist "%node_exe%" (
-  echo Failed to find node.exe
+  echo Failed to find ayo.exe
   goto run-tests
 )
 echo Building addons-napi
