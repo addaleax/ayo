@@ -8,7 +8,7 @@ install:
 - cmd: python -V
 cache: Release
 build_script:
-- cmd: ./vcbuild
+- cmd: .\vcbuild debug
 test_script:
-- cmd: .\vcbuild test
+- cmd: .\vcbuild debug test
 
